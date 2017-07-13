@@ -1,6 +1,7 @@
 #learn to scrape web pages
 import requests
 import csv
+import subprocess
 from datetime import datetime
 from bs4 import BeautifulSoup
 
@@ -36,6 +37,13 @@ for i in soup.find_all(class_="related"):
 	for t in bel:
 		headlines.append(t.text.strip())
 
+#get last used headline id and add 1
+last_line = subprocess.check_output(["tail", "-1", "fox.csv"])
+last_id = last_line.split(b',')[-1:]
+for i in last_id:
+	id = int(i)
+id += 1
+
 
 
 #create list of lists to put into .csv
@@ -45,7 +53,9 @@ for headline in headlines:
 	place_holder.append(datetime.strftime(datetime.now(),'%Y-%m-%d %H:%M:%S'))
 	place_holder.append(source_id)
 	place_holder.append(headline)
+	place_holder.append(id)
 	list_for_csv.append(place_holder)
+	id += 1
 
 # print(list_for_csv)
 #include timestamp, source (numeric code for site) and cleaned up headline (no leading/tailing spaces etc)
