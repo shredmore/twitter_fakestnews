@@ -1,0 +1,65 @@
+# For use on https://app.quickdatabasediagrams.com
+# Modify the code to update the DB schema diagram.
+# To reset the sample schema, replace everything with
+# two dots ('..' - without quotes).
+
+# "Hospital General Information.csv"
+headlines
+-
+headline_id string FK >- dim_headline.headline_id
+date_time timestamp
+site_code string FK >- dim_site_code.site_code
+headline string
+
+# "Timely and Effective Care - Hospital.csv"
+dim_headline
+-
+headline_id string FK
+topic string
+positive int
+
+# "Readmissions and Deaths - Hospital.csv"
+tweets
+-
+tweet_id string FK >- dim_tweets.tweet_id
+user_id string FK >- dim_user.user_id
+date_time timestamp
+tweet string
+
+# "Measure Dates.csv"
+dim_tweets
+-
+tweet_id string
+user_id string
+topic string FK >-< dim_headline.topic
+positive int
+
+# "hvbp_hcahps_11_10_2016.csv"
+dim_site_code
+-
+site_code string PK
+site_name string
+left_right_center string
+owner string
+
+dim_user
+-
+user_id string
+username string
+user_location string
+user_left_right_center string
+
+
+[settings]
+Position 72 155
+Zoom 80
+DefaultFieldType int
+CaseSensitive on
+
+[layout]
+headlines 52 182
+dim_headline 348 226
+dim_site_code 329 370
+tweets 58 -55
+dim_tweets 381 -138
+dim_user 310 54
