@@ -1,0 +1,1 @@
+Code in the scraping folder is written in Python3 and is set to run on Ben's RaspberryPi twice a day. It scrapes headlines from fox news, new york times and pbs news hour.
