@@ -1,1 +1,7 @@
 Code in the scraping folder is written in Python3 and is set to run on Ben's RaspberryPi twice a day. It scrapes headlines from fox news, new york times and pbs news hour.
+
+Code in copy_from_pi: just run copy_headlines_from_pi.sh from the repo. It will do the rest. 
+	- It copies over the headline files from the pi, merges them into one file, puts that file in hdfs and creates a table (schema on read) to be queried.
+	- The file has to be run from the repo location, so don't navigate away and try to run it.
+	- It will create a headlines folder in /data but this is not used after the data is transferred to hdfs and table built.
+	- Password for pi is required and in google sheet
