@@ -6,6 +6,9 @@
 echo 'getting pwd'
 MY_CWD=$(pwd)
 
+#del headlines dir
+rm -r /data/headlines
+
 #create safe area outside of repo
 #to run this code
 echo 'making headlines directory'
