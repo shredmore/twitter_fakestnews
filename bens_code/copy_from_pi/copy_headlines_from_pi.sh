@@ -7,6 +7,9 @@ echo 'getting pwd'
 MY_CWD=$(pwd)
 
 #del headlines dir
+#works w/o this line but gives
+#error when cat all the .csv
+#since healines wold exist from previous run
 rm -r /data/headlines
 
 #create safe area outside of repo
