@@ -43,6 +43,19 @@ LIMIT 100;
 --how many headlines mentione trump and obama
 SELECT * FROM headlines WHERE headline LIKE '%Trump%Obama%' OR headline LIKE '%Obama%Trump%';
 
+--what percent of headlines contain trump
+SELECT y.site_code, y.trump_hl / z.all_hl
+FROM
+(SELECT site_code, COUNT(*) trump_hl FROM
+(SELECT headline, site_code, MIN(date_time) FROM headlines GROUP BY headline, site_code) a
+WHERE headline LIKE '%Trump%'
+GROUP BY site_code) y
+JOIN
+(SELECT site_code, COUNT(*) all_hl FROM
+(SELECT headline, site_code, MIN(date_time) FROM headlines GROUP BY headline, site_code) b
+GROUP BY site_code) z
+ON y.site_code=z.site_code;
+
 
 
 
