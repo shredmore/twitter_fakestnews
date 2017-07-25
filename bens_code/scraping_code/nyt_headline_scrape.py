@@ -35,11 +35,15 @@ for i in soup.find_all(class_="story-heading"):
 		headlines.append(t.text.strip())
 
 #get last used headline id and add 1
-last_line = subprocess.check_output(["tail", "-1", "nyt.csv"])
-last_id = last_line.split(b',')[-1:]
-for i in last_id:
-	id = int(i)
-id += 1
+my_file = Path("./nyt.csv")
+if my_file.is_file():
+	last_line = subprocess.check_output(["tail", "-1", "nyt.csv"])
+	last_id = last_line.split(b',')[-1:]
+	for i in last_id:
+		id = int(i)
+	id += 1	
+else:
+	id = 0
 
 #create list of lists to put into .csv
 list_for_csv = []
