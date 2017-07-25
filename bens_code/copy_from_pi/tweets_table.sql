@@ -9,7 +9,7 @@ CREATE EXTERNAL TABLE tweets (
 	,mentions string
 	,hastags string
 	,id string
-	permalink string
+	,permalink string
 	)
 ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.OpenCSVSerde' WITH SERDEPROPERTIES (
 "separatorChar" = ",", "quoteChar" = '"', "escapeChar" = '\\' )
