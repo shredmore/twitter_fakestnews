@@ -1,0 +1,1 @@
+SELECT * FROM tweets LIMIT 3;
