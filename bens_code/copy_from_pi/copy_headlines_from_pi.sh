@@ -32,13 +32,13 @@ cat *.csv > headlines.csv
 
 #make hdfs dir
 echo 'making hdfs headlines directory'
-hdfs dfs -mkdir /user/w205/project1
-hdfs dfs -mkdir /user/w205/project1/headlines
+sudo -u hdfs hadoop fs -mkdir /user/w205/project1
+sudo -u hdfs hadoop fs -mkdir /user/w205/project1/headlines
 
 #put file into hdfs
 echo 'putting merged headlines.csv into hdfs'
-hdfs dfs -rm /user/w205/project1/headlines/headlines.csv
-hdfs dfs -put headlines.csv /user/w205/project1/headlines
+sudo -u hdfs hadoop fs -rm /user/w205/project1/headlines/headlines.csv
+sudo -u hdfs hadoop fs -put headlines.csv /user/w205/project1/headlines
 
 #change back to original directory
 cd $MY_CWD

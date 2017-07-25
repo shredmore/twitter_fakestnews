@@ -32,7 +32,7 @@ cat *.csv > tweets.csv
 
 #make hdfs dir
 echo 'making hdfs headlines directory'
-hdfs dfs -mkdir /user/w205/project1
+sudo -u hdfs hadoop fs -mkdir /user/w205/project1
 sudo -u hdfs hadoop fs -mkdir /user/w205/project1/tweets
 
 #put file into hdfs
