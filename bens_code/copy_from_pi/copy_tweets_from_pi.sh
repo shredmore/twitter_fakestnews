@@ -33,12 +33,12 @@ cat *.csv > tweets.csv
 #make hdfs dir
 echo 'making hdfs headlines directory'
 hdfs dfs -mkdir /user/w205/project1
-hdfs dfs -mkdir /user/w205/project1/tweets
+sudo -u hdfs hadoop fs -mkdir /user/w205/project1/tweets
 
 #put file into hdfs
 echo 'putting merged headlines.csv into hdfs'
-hdfs dfs -rm /user/w205/project1/headlines/tweets.csv
-hdfs dfs -put tweets.csv /user/w205/project1/tweets
+sudo -u hdfs hadoop fs -rm /user/w205/project1/headlines/tweets.csv
+sudo -u hdfs hadoop fs -put tweets.csv /user/w205/project1/tweets
 
 #change back to original directory
 cd $MY_CWD
