@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS headlines;
+DROP TABLE IF EXISTS tweets;
 CREATE EXTERNAL TABLE tweets (
 	username string
 	,date_time date
