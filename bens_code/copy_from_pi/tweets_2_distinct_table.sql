@@ -1,6 +1,6 @@
 DROP TABLE IF EXISTS tweets_2_distinct;
 CREATE TABLE tweets_2_distinct AS
-created_at
+SELECT DISTINCT created_at
 ,tweet_id
 ,username
 ,user_id
