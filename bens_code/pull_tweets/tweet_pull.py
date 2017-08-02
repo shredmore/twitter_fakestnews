@@ -131,8 +131,9 @@ for i in fakenews:
 			mentions_temp =[]
 			mentions_temp.append(created_at)
 			mentions_temp.append(tweet_id)
-			for i in mention:
-				mentions_temp.append(mention[i])
+			mentions_temp.append(mention['id'])
+			mentions_temp.append(mention['name'])
+			mentions_temp.append(mention['screen_name'])
 			mentions.append(mentions_temp)
 	except KeyError:
 		mentions_temp = []
