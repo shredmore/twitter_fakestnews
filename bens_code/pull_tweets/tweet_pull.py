@@ -233,30 +233,35 @@ file_name_mnt = 'mentions_' + datetime.today().strftime('%Y-%m-%d_%H-%M-%S') + '
 file_name_plc = 'places_' + datetime.today().strftime('%Y-%m-%d_%H-%M-%S') + '.csv'
 
 #should automate dir creation at some point
-file_path = "./twitter_data/"
+file_path_twt = "./twitter_data/tweets/"
+file_path_usr = "./twitter_data/users/"
+file_path_hsh = "./twitter_data/hashtags/"
+file_path_url = "./twitter_data/urls/"
+file_path_mnt = "./twitter_data/mentions/"
+file_path_plc = "./twitter_data/places/"
 
 
-with open(file_path+file_name_twt, 'w', newline='') as csvfile:
+with open(file_path_twt+file_name_twt, 'w', newline='') as csvfile:
     tweetwriter = csv.writer(csvfile)
     tweetwriter.writerows(tweets)
 
-with open(file_path+file_name_usr, 'w', newline='') as csvfile:
+with open(file_path_usr+file_name_usr, 'w', newline='') as csvfile:
     tweetwriter = csv.writer(csvfile)
     tweetwriter.writerows(user)
 
-with open(file_path+file_name_hsh, 'w', newline='') as csvfile:
+with open(file_path_hsh+file_name_hsh, 'w', newline='') as csvfile:
     tweetwriter = csv.writer(csvfile)
     tweetwriter.writerows(hashtags)
 
-with open(file_path+file_name_url, 'w', newline='') as csvfile:
+with open(file_path_url+file_name_url, 'w', newline='') as csvfile:
     tweetwriter = csv.writer(csvfile)
     tweetwriter.writerows(urls)
 
-with open(file_path+file_name_mnt, 'w', newline='') as csvfile:
+with open(file_path_mnt+file_name_mnt, 'w', newline='') as csvfile:
     tweetwriter = csv.writer(csvfile)
     tweetwriter.writerows(mentions)
 
-with open(file_path+file_name_plc, 'w', newline='') as csvfile:
+with open(file_path_plc+file_name_plc, 'w', newline='') as csvfile:
     tweetwriter = csv.writer(csvfile)
     tweetwriter.writerows(place)
 
