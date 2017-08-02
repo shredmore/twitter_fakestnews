@@ -49,7 +49,35 @@ for i in fakenews:
 	tweets_temp.append(tweet_id)
 	tweets_temp.append(new_dict['user']['name'])
 	tweets_temp.append(str(new_dict['user']['id']))
-	tweets_temp.append(new_dict['text'])
+	
+	#test removing newlines and commas from phrase
+	phrase = new_dict['text']
+
+	remove_start_and_end = phrase.strip()
+
+	remove_commas = remove_start_and_end.split(',')
+
+	#remove new lines
+	no_new_line = []
+	for i in remove_commas:
+		no_new_line.append(i.split('\n'))
+
+	#list of words want to keep
+	words_to_keep = []
+	for i in no_new_line:
+		for j in i:
+			if len(j) > 0:
+				words_to_keep.append(j)
+
+	#recreate sentence
+	tweet = ""
+	for i in words_to_keep:
+		tweet = tweet + i + " "
+
+	#remove end space on tweet
+	tweet = tweet.strip()
+
+	tweets_temp.append(tweet)
 	tweets_temp.append(new_dict['lang'])
 	source = re.match(r"^.*>(.*)<.*$",new_dict['source'])
 	tweets_temp.append(source.group(1))
@@ -160,7 +188,33 @@ for i in fakenews:
 	except KeyError:
 		user_temp.append('false')
 	try:
-		user_temp.append(new_dict['user']['description'])
+		#test removing newlines and commas from phrase
+		phrase = new_dict['user']['description']
+
+		remove_start_and_end = phrase.strip()
+
+		remove_commas = remove_start_and_end.split(',')
+
+		#remove new lines
+		no_new_line = []
+		for i in remove_commas:
+			no_new_line.append(i.split('\n'))
+
+		#list of words want to keep
+		words_to_keep = []
+		for i in no_new_line:
+			for j in i:
+				if len(j) > 0:
+					words_to_keep.append(j)
+
+		#recreate sentence
+		description = ""
+		for i in words_to_keep:
+			description = description + i + " "
+
+		#remove end space on tweet
+		description = description.strip()
+		user_temp.append(description)
 	except KeyError:
 		user_temp.append(None)
 	try:
