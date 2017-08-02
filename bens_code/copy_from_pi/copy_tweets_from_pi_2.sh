@@ -28,6 +28,12 @@ cp $MY_CWD/mentions_table.sql ./
 cp $MY_CWD/place_table.sql ./
 cp $MY_CWD/urls_table.sql ./
 cp $MY_CWD/user_table.sql ./
+cp $MY_CWD/tweets_2_distinct_table.sql ./
+cp $MY_CWD/hashtags_distinct_table.sql ./
+cp $MY_CWD/mentions_distinct_table.sql ./
+cp $MY_CWD/place_distinct_table.sql ./
+cp $MY_CWD/urls_distinct_table.sql ./
+cp $MY_CWD/user_distinct_table.sql ./
 
 #make hdfs dir
 echo 'making hdfs tweets directory'
