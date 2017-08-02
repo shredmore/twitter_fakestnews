@@ -10,7 +10,6 @@ MY_CWD=$(pwd)
 #to run this code
 echo 'making tweets directory'
 rm -r /data/twitter_data
-mkdir /data/twitter_data
 
 #cd to headline dir
 echo 'changing to tweets directory'
@@ -49,9 +48,6 @@ sudo -u hdfs hadoop fs -put ./places/*.csv /user/w205/project1/place
 sudo -u hdfs hadoop fs -put ./urls/*.csv /user/w205/project1/urls
 sudo -u hdfs hadoop fs -put ./users/*.csv /user/w205/project1/user
 
-#change back to original directory
-cd $MY_CWD
-
 #drop and recreate table tha holds headlines
 echo 'dropping and recreating table'
 hive -f tweets_2_table.sql
@@ -60,6 +56,9 @@ hive -f mentions_table.sql
 hive -f place_table.sql
 hive -f urls_table.sql
 hive -f user_table.sql
+
+#change back to original directory
+cd $MY_CWD
 
 #clean exit
 echo 'Goodbye!'
