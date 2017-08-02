@@ -55,13 +55,19 @@ sudo -u hdfs hadoop fs -put ./urls/*.csv /user/w205/project1/urls
 sudo -u hdfs hadoop fs -put ./users/*.csv /user/w205/project1/user
 
 #drop and recreate table tha holds headlines
-echo 'dropping and recreating table'
+echo 'dropping and recreating tables'
 hive -f tweets_2_table.sql
 hive -f hashtags_table.sql
 hive -f mentions_table.sql
 hive -f place_table.sql
 hive -f urls_table.sql
 hive -f user_table.sql
+hive -f tweets_2_distinct_table.sql
+hive -f hashtags_distinct_table.sql
+hive -f mentions_distinct_table.sql
+hive -f place_distinct_table.sql
+hive -f urls_distinct_table.sql
+hive -f user_distinct_table.sql
 
 #change back to original directory
 cd $MY_CWD
