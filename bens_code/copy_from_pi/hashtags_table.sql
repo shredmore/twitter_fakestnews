@@ -3,7 +3,7 @@ CREATE EXTERNAL TABLE hashtags (
 	created_at date
 	,tweet_id string
 	,hashtag_type string
-	,hastag string
+	,hashtag string
 	)
 ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.OpenCSVSerde' WITH SERDEPROPERTIES (
 "separatorChar" = ",", "quoteChar" = '"', "escapeChar" = '\\' )
