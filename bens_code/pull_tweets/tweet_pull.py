@@ -17,7 +17,7 @@ api = twitter.Api(consumer_key='P2jn6plFXmwOTBH6NSBkWCJPN',
 
 #set query variables (100 is max)
 key_word_1 = 'fakenews'
-count = '3'
+count = '100'
 
 fakenews = api.GetSearch(raw_query="q="+key_word_1+"%20OR%20"+"%23"+key_word_1+"&count="+count)
 
@@ -232,28 +232,31 @@ file_name_url = 'urls_' + datetime.today().strftime('%Y-%m-%d_%H-%M-%S') + '.csv
 file_name_mnt = 'mentions_' + datetime.today().strftime('%Y-%m-%d_%H-%M-%S') + '.csv'
 file_name_plc = 'places_' + datetime.today().strftime('%Y-%m-%d_%H-%M-%S') + '.csv'
 
+#should automate dir creation at some point
+file_path = "./twitter_data/"
 
-with open(file_name_twt, 'w', newline='') as csvfile:
+
+with open(file_path+file_name_twt, 'w', newline='') as csvfile:
     tweetwriter = csv.writer(csvfile)
     tweetwriter.writerows(tweets)
 
-with open(file_name_usr, 'w', newline='') as csvfile:
+with open(file_path+file_name_usr, 'w', newline='') as csvfile:
     tweetwriter = csv.writer(csvfile)
     tweetwriter.writerows(user)
 
-with open(file_name_hsh, 'w', newline='') as csvfile:
+with open(file_path+file_name_hsh, 'w', newline='') as csvfile:
     tweetwriter = csv.writer(csvfile)
     tweetwriter.writerows(hashtags)
 
-with open(file_name_url, 'w', newline='') as csvfile:
+with open(file_path+file_name_url, 'w', newline='') as csvfile:
     tweetwriter = csv.writer(csvfile)
     tweetwriter.writerows(urls)
 
-with open(file_name_mnt, 'w', newline='') as csvfile:
+with open(file_path+file_name_mnt, 'w', newline='') as csvfile:
     tweetwriter = csv.writer(csvfile)
     tweetwriter.writerows(mentions)
 
-with open(file_name_plc, 'w', newline='') as csvfile:
+with open(file_path+file_name_plc, 'w', newline='') as csvfile:
     tweetwriter = csv.writer(csvfile)
     tweetwriter.writerows(place)
 
