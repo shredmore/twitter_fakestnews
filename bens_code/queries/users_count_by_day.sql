@@ -10,4 +10,4 @@ JOIN
 FROM users_distinct
 GROUP BY user_id, username) b
 ON a.user_id = b.user_id
-GROUP BY CONCAT(SUBSTRING(a.created_at,5,7),SUBSTRING(a.created_at,27,4)), a.username;
+GROUP BY CONCAT(SUBSTRING(a.created_at,5,7),SUBSTRING(a.created_at,27,4)), a.username, b.followers;
