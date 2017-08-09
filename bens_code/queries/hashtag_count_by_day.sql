@@ -1,3 +1,3 @@
-SELECT to_date(date_time) year_month_day, hashtag, COUNT(*) counts
+SELECT to_date(created_at) year_month_day, hashtag, COUNT(*) counts
 FROM hashtags_distinct
-GROUP BY to_date(date_time), hashtag;
+GROUP BY to_date(created_at), hashtag;
