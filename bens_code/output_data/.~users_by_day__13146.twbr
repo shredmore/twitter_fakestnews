@@ -108,20 +108,18 @@
       <aliases enabled='yes' />
       <column caption='Date' datatype='date' name='[F1]' role='dimension' type='ordinal' />
       <column caption='Username' datatype='string' name='[F2]' role='dimension' type='nominal' />
-      <column caption='Tweets' datatype='integer' name='[F3]' role='measure' type='quantitative' />
+      <column caption='Followers' datatype='integer' name='[F3]' role='measure' type='quantitative' />
+      <column caption='Tweets' datatype='integer' name='[F4]' role='measure' type='quantitative' />
       <column datatype='integer' name='[Number of Records]' role='measure' type='quantitative' user:auto-column='numrec'>
         <calculation class='tableau' formula='1' />
       </column>
       <column-instance column='[F2]' derivation='None' name='[none:F2:nk]' pivot='key' type='nominal' />
       <extract count='-1' enabled='false' units='records'>
-        <connection class='dataengine' dbname='/Users/benthompson/Documents/My Tableau Repository/Datasources/users_by_day_2017-08-08.tde' schema='Extract' tablename='Extract' update-time='08/09/2017 01:20:14 AM'>
+        <connection class='dataengine' dbname='/Users/benthompson/Documents/My Tableau Repository/Datasources/users_by_day_2017-08-08.tde' schema='Extract' tablename='Extract' update-time=''>
           <relation name='Extract' table='[Extract].[Extract]' type='table' />
           <calculations>
             <calculation column='[Number of Records]' formula='1' />
           </calculations>
-          <refresh>
-            <refresh-event add-from-file-path='' increment-value='%null%' refresh-type='create' rows-inserted='27008' timestamp-start='2017-08-09 01:20:14.374' />
-          </refresh>
           <metadata-records>
             <metadata-record class='column'>
               <remote-name>F1</remote-name>
@@ -133,12 +131,12 @@
               <family>users_by_day_2017-08-08.tsv</family>
               <local-type>date</local-type>
               <aggregation>Year</aggregation>
-              <approx-count>9</approx-count>
-              <contains-null>true</contains-null>
+              <approx-count>8</approx-count>
+              <contains-null>false</contains-null>
               <statistics>
                 <statistic aggregation='Min' datatype='date'>#2017-08-02#</statistic>
                 <statistic aggregation='Max' datatype='date'>#2017-08-09#</statistic>
-                <statistic aggregation='Count' datatype='integer'>27001</statistic>
+                <statistic aggregation='Count' datatype='integer'>27640</statistic>
                 <statistic aggregation='Median' datatype='date'>#2017-08-05#</statistic>
               </statistics>
               <attributes>
@@ -163,15 +161,15 @@
               <family>users_by_day_2017-08-08.tsv</family>
               <local-type>string</local-type>
               <aggregation>Count</aggregation>
-              <approx-count>22498</approx-count>
+              <approx-count>22497</approx-count>
               <scale>1</scale>
               <width>1073741823</width>
-              <contains-null>true</contains-null>
+              <contains-null>false</contains-null>
               <collation flag='0' name='LEN_RUS' />
               <statistics>
                 <statistic aggregation='Min' datatype='string'>&quot;^¥¥¥¥^&quot;</statistic>
                 <statistic aggregation='Max' datatype='string'>&quot;🦋🌺Megan⚜️MAGA🌸🦋&quot;</statistic>
-                <statistic aggregation='Count' datatype='integer'>27001</statistic>
+                <statistic aggregation='Count' datatype='integer'>27640</statistic>
               </statistics>
               <attributes>
                 <attribute datatype='string' name='DebugRemoteCollation'>&quot;en_US&quot;</attribute>
@@ -187,7 +185,7 @@
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>F3</remote-name>
-              <remote-type>16</remote-type>
+              <remote-type>3</remote-type>
               <local-name>[F3]</local-name>
               <parent-name>[Extract]</parent-name>
               <remote-alias>F3</remote-alias>
@@ -195,19 +193,47 @@
               <family>users_by_day_2017-08-08.tsv</family>
               <local-type>integer</local-type>
               <aggregation>Sum</aggregation>
-              <approx-count>21</approx-count>
+              <approx-count>5850</approx-count>
+              <contains-null>true</contains-null>
+              <statistics>
+                <statistic aggregation='Min' datatype='integer'>0</statistic>
+                <statistic aggregation='Max' datatype='integer'>2625609</statistic>
+                <statistic aggregation='Count' datatype='integer'>27498</statistic>
+              </statistics>
+              <attributes>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (comparable)'>true</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (compression)'>&quot;array&quot;</attribute>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (distinct)'>true</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (size)'>4</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (sort-position)'>3</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (sort-sense)'>&quot;asc&quot;</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (storagewidth)'>2</attribute>
+                <attribute datatype='string' name='DebugRemoteType'>&quot;sint32&quot;</attribute>
+              </attributes>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>F4</remote-name>
+              <remote-type>16</remote-type>
+              <local-name>[F4]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>F4</remote-alias>
+              <ordinal>3</ordinal>
+              <family>users_by_day_2017-08-08.tsv</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>22</approx-count>
               <contains-null>false</contains-null>
               <statistics>
-                <statistic aggregation='Sum' datatype='real'>30529.0</statistic>
-                <statistic aggregation='Avg' datatype='real'>1.130368779620853</statistic>
+                <statistic aggregation='Sum' datatype='real'>30763.0</statistic>
+                <statistic aggregation='Avg' datatype='real'>1.1129884225759767</statistic>
                 <statistic aggregation='Min' datatype='integer'>1</statistic>
                 <statistic aggregation='Max' datatype='integer'>29</statistic>
-                <statistic aggregation='Stdev' datatype='real'>0.62204153062774759</statistic>
-                <statistic aggregation='StdevP' datatype='real'>0.62203001464565566</statistic>
-                <statistic aggregation='Var' datatype='real'>0.38693566582571098</statistic>
-                <statistic aggregation='VarP' datatype='real'>0.38692133912007465</statistic>
-                <statistic aggregation='Count' datatype='integer'>27008</statistic>
-                <statistic aggregation='SumXSqr' datatype='real'>44959.0</statistic>
+                <statistic aggregation='Stdev' datatype='real'>0.59861440032059277</statistic>
+                <statistic aggregation='StdevP' datatype='real'>0.59860357145274179</statistic>
+                <statistic aggregation='Var' datatype='real'>0.35833920027118288</statistic>
+                <statistic aggregation='VarP' datatype='real'>0.35832623575597772</statistic>
+                <statistic aggregation='Count' datatype='integer'>27640</statistic>
+                <statistic aggregation='SumXSqr' datatype='real'>44143.0</statistic>
               </statistics>
               <attributes>
                 <attribute datatype='integer' name='DebugRemoteMetadata (size)'>1</attribute>
@@ -222,13 +248,13 @@
               <local-name>[Number of Records]</local-name>
               <parent-name>[Extract]</parent-name>
               <remote-alias>Number of Records</remote-alias>
-              <ordinal>3</ordinal>
+              <ordinal>4</ordinal>
               <local-type>integer</local-type>
               <aggregation>Sum</aggregation>
               <approx-count>1</approx-count>
               <contains-null>false</contains-null>
               <statistics>
-                <statistic aggregation='Sum' datatype='real'>27008.0</statistic>
+                <statistic aggregation='Sum' datatype='real'>27640.0</statistic>
                 <statistic aggregation='Avg' datatype='real'>1.0</statistic>
                 <statistic aggregation='Min' datatype='integer'>1</statistic>
                 <statistic aggregation='Max' datatype='integer'>1</statistic>
@@ -236,9 +262,9 @@
                 <statistic aggregation='StdevP' datatype='real'>0.0</statistic>
                 <statistic aggregation='Var' datatype='real'>0.0</statistic>
                 <statistic aggregation='VarP' datatype='real'>0.0</statistic>
-                <statistic aggregation='Count' datatype='integer'>27008</statistic>
+                <statistic aggregation='Count' datatype='integer'>27640</statistic>
                 <statistic aggregation='Median' datatype='integer'>1</statistic>
-                <statistic aggregation='SumXSqr' datatype='real'>27008.0</statistic>
+                <statistic aggregation='SumXSqr' datatype='real'>27640.0</statistic>
               </statistics>
               <attributes>
                 <attribute datatype='string' name='DebugRemoteMetadata (ordered)'>&quot;asc&quot;</attribute>
@@ -2630,6 +2656,9 @@
               <bucket>&quot;Geoff Caldwell&quot;</bucket>
             </map>
             <map to='#4e79a7'>
+              <bucket>&quot;Geoff De Weaver&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
               <bucket>&quot;George Kimball&quot;</bucket>
             </map>
             <map to='#4e79a7'>
@@ -4122,6 +4151,9 @@
             </map>
             <map to='#59a14f'>
               <bucket>&quot;Emmanuelle Tregaro&quot;</bucket>
+            </map>
+            <map to='#59a14f'>
+              <bucket>&quot;eNCA&quot;</bucket>
             </map>
             <map to='#59a14f'>
               <bucket>&quot;Eric Bodman&quot;</bucket>
@@ -9198,6 +9230,9 @@
             </map>
             <map to='#8cd17d'>
               <bucket>&quot;😎&quot;</bucket>
+            </map>
+            <map to='#9c755f'>
+              <bucket>&quot;Walt Mossberg&quot;</bucket>
             </map>
             <map to='#9d7660'>
               <bucket>&quot;-234&quot;</bucket>
@@ -16511,6 +16546,9 @@
               <bucket>&quot;Madman in a blue box&quot;</bucket>
             </map>
             <map to='#bab0ac'>
+              <bucket>&quot;MalibuSelfies&quot;</bucket>
+            </map>
+            <map to='#bab0ac'>
               <bucket>&quot;Mandere Ondieki&quot;</bucket>
             </map>
             <map to='#bab0ac'>
@@ -22758,6 +22796,9 @@
             </map>
             <map to='#e15759'>
               <bucket>&quot;Zaza Vapote&quot;</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;ZEIT ONLINE&quot;</bucket>
             </map>
             <map to='#e15759'>
               <bucket>&quot;🇺🇸 yvonne burton&quot;</bucket>
@@ -30221,13 +30262,7 @@
               <bucket>&quot;Yes Really&quot;</bucket>
             </map>
             <map to='#ffbe7d'>
-              <bucket>&quot;You can call me MB&quot;</bucket>
-            </map>
-            <map to='#ffbe7d'>
               <bucket>&quot;Yvonne Trimble&quot;</bucket>
-            </map>
-            <map to='#ffbe7d'>
-              <bucket>&quot;Zappity&quot;</bucket>
             </map>
             <map to='#ffbe7d'>
               <bucket>&quot;Аня Кузнецова&quot;</bucket>
@@ -30239,19 +30274,10 @@
               <bucket>&quot;الشيخة رزان&quot;</bucket>
             </map>
             <map to='#ffbe7d'>
-              <bucket>&quot;मानवतावाद&quot;</bucket>
-            </map>
-            <map to='#ffbe7d'>
               <bucket>&quot;流通情報サテライトBox&quot;</bucket>
             </map>
             <map to='#ffbe7d'>
               <bucket>&quot;🇮🇱Napoleon🇫🇷MC&quot;</bucket>
-            </map>
-            <map to='#ffbe7d'>
-              <bucket>&quot;👑QueenS~Infidel❤️💋&quot;</bucket>
-            </map>
-            <map to='#ffbe7d'>
-              <bucket>&quot;🚨LOCK&apos;EM ALL UP🚨&quot;</bucket>
             </map>
           </encoding>
         </style-rule>
@@ -30271,7 +30297,7 @@
           <datasource-dependencies datasource='federated.1povrl111nigd716wjv3h1qej7uc'>
             <column caption='Date' datatype='date' name='[F1]' role='dimension' type='ordinal' />
             <column caption='Username' datatype='string' name='[F2]' role='dimension' type='nominal' />
-            <column caption='Tweets' datatype='integer' name='[F3]' role='measure' type='quantitative' />
+            <column caption='Followers' datatype='integer' name='[F3]' role='measure' type='quantitative' />
             <column-instance column='[F1]' derivation='None' name='[none:F1:qk]' pivot='key' type='quantitative' />
             <column-instance column='[F2]' derivation='None' name='[none:F2:nk]' pivot='key' type='nominal' />
             <column-instance column='[F3]' derivation='Sum' name='[sum:F3:qk]' pivot='key' type='quantitative' />

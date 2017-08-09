@@ -1,4 +1,5 @@
 SELECT CONCAT(SUBSTRING(a.created_at,5,7),SUBSTRING(a.created_at,27,4)) year_month_day
+,b.user_id
 ,a.username
 ,b.followers
 ,COUNT(*) counts
@@ -9,4 +10,4 @@ JOIN
 FROM users_distinct
 GROUP BY user_id) b
 ON a.user_id = b.user_id
-GROUP BY CONCAT(SUBSTRING(a.created_at,5,7),SUBSTRING(a.created_at,27,4)), a.username, b.followers;
+GROUP BY CONCAT(SUBSTRING(a.created_at,5,7),SUBSTRING(a.created_at,27,4)), b.user_id, a.username, b.followers;
