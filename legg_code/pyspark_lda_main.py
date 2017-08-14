@@ -1,4 +1,5 @@
 import sys
+from time import sleep
 import argparse
 from datetime import datetime, date, timedelta
 import pyspark_lda_pipeline as lp
@@ -9,9 +10,9 @@ sc = SparkContext("local[2]")
 headlines_hdfspath = "/user/w205/project1/headlines/headlines.csv"
 tweets_hdfsdir_path = "/user/w205/project1/tweets_2/"
 stopwords_txt_path = '/home/w205/twitter_fakestnews/legg_code/stopwords.txt'
-wordcloud_hdfspath = "/user/w205/project1/lda_wordcloud/lda_wordcloud.csv"
-cos_sim_hdfspath = "/user/w205/project1/lda_cossim/lda_cossim.csv"
-topics_hdfspath = "/user/w205/project1/lda_topics/lda_topics.csv"
+wordcloud_hdfspath = "/home/w205/lda_outputs/lda_wordcloud/lda_wordcloud.csv"
+cos_sim_hdfspath = "/home/w205/lda_outputs/lda_cossim/lda_cossim.csv"
+topics_hdfspath = "/home/w205/lda_outputs/lda_topics/lda_topics.csv"
 
 def main(args):
 	# get date range from arguments
@@ -77,15 +78,15 @@ def main(args):
 	print
 	print "------------------------------------------------------------"
 	print "Starting Machine Learning Pipeline..."
+	print
+	print
 	# train model
 	headlines_topics, tweets_topics, cos_sim = lp.pipeline_cosine_similarity(sc, headlines_hdfspath, tweets_hdfsdir_path, stopwords_txt_path, n_topics, n_terms, date_range1, date_range2, news_agency)
 	# write to file
 	print
-	write = raw_input("write daily results to HDFS? (y/n) \n")
-	if not write or write.lower() == "n":
-		sys.exit(1)
-	elif write.lower() == "y":
-		lp.write_to_HDFS(headlines_topics, tweets_topics, cos_sim, wordcloud_hdfspath, cos_sim_hdfspath, topics_hdfspath, datetime_obj = date_range2)
+	print "writing results to HDFS in 10 seconds, ctrl-c to stop"
+	sleep(10)
+	lp.write_to_HDFS(headlines_topics, tweets_topics, cos_sim, wordcloud_hdfspath, cos_sim_hdfspath, topics_hdfspath, datetime_obj = date_range2)
 
 
 

@@ -202,13 +202,14 @@ def cosine_similarity(x,y):
 	denominator = square_rooted(x)*square_rooted(y)
 	return round(numerator/float(denominator),3)
 
-def counter_to_vec2(counter, len_loop):
+def counter_to_vec(counter, len_loop):
 	j = 0
 	vec = []
 	for i in range(len_loop):
 		if i == counter[j][0]:
-			j += 1
 			vec.append(counter[j][1])
+			if len(counter) > j + 1: 
+				j += 1
 		else:
 			vec.append(0)
 	return vec
@@ -227,28 +228,34 @@ def pipeline_cosine_similarity(sc, headlines_hdfspath, tweets_hdfsdir_path, stop
 	headlines_words = to_counter(headlines_words)
 	tweets_words = to_counter(tweets_words)
 	# construct vectors
-	counter_to_vec = lambda counter: [pair[1] for pair in counter]
 	headlines_words = counter_to_vec(headlines_words, len(unique_words))
-	tweets_words = counter_to_vec2(tweets_words, len(unique_words))
+	tweets_words = counter_to_vec(tweets_words, len(unique_words))
 	# compute similarity
 	cos_sim = cosine_similarity(headlines_words, tweets_words)
-	
 	print "Cosine similarity between news headlines and tweets topics: ", cos_sim 
-
 	return(headlines_topics, tweets_topics, cos_sim)
 
 #-----------------------------
 # Write to HDFS
+from time import sleep
 import csv
 import sys
 
 def write_to_HDFS(headlines_topics, tweets_topics, cos_sim, wordcloud_hdfspath, cos_sim_hdfspath, topics_hdfspath, datetime_obj):
+	# get today's date
+	date = datetime_obj.strftime('#%Y-%m-%d#')
 	# read last date from file
-	fh = open(wordcloud_hdfspath, 'r')
-	reader = csv.reader(fh, delimiter = ",")
-	row1 = next(reader)
-	fh.close()
-	date_stored = row1[0]
+	try :
+		fh = open(wordcloud_hdfspath, 'r')
+		lastline = fh.readlines()[-2]
+		lastdate = lastline.split(",")[0]
+		fh.close()
+		# if date repeat, check if still store
+		if lastdate == date:
+			print "date already stored, press ctrl-c within 20 seconds to abort"
+			sleep(20)
+	except:
+		pass
 	# construct unique word list
 	headlines_words = [word for topic in headlines_topics for word in topic]
 	tweets_words = [word for topic in tweets_topics for word in topic]
@@ -260,14 +267,7 @@ def write_to_HDFS(headlines_topics, tweets_topics, cos_sim, wordcloud_hdfspath, 
 	merged_dict = {}
 	for word in unique_words:
 		merged_dict[word] = headlines_words.get(word, 0) + tweets_words.get(word, 0)
-	# get today's date
-	date = datetime_obj.strftime('#%Y-%m-%d#')
-	# if date repeat, check if still store
-	if date_stored == date:
-		confirm = raw_input("Already stored results for today, continue? (y/n) \n")
-		if confirm.lower() != "y":
-			print ("abort writing to persistent storage")
-			sys.exit(1)
+
 	# construct wordcloud rows
 	cloud_list = []
 	for word in merged_dict:
