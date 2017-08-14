@@ -202,10 +202,10 @@ def cosine_similarity(x,y):
 	denominator = square_rooted(x)*square_rooted(y)
 	return round(numerator/float(denominator),3)
 
-def counter_to_vec2(counter):
+def counter_to_vec2(counter, len_loop):
 	j = 0
 	vec = []
-	for i in range(270):
+	for i in range(len_loop):
 		if i == counter[j][0]:
 			j += 1
 			vec.append(counter[j][1])
@@ -228,8 +228,8 @@ def pipeline_cosine_similarity(sc, headlines_hdfspath, tweets_hdfsdir_path, stop
 	tweets_words = to_counter(tweets_words)
 	# construct vectors
 	counter_to_vec = lambda counter: [pair[1] for pair in counter]
-	headlines_words = counter_to_vec(headlines_words)
-	tweets_words = counter_to_vec2(tweets_words)
+	headlines_words = counter_to_vec(headlines_words, len(unique_words))
+	tweets_words = counter_to_vec2(tweets_words, len(unique_words))
 	# compute similarity
 	cos_sim = cosine_similarity(headlines_words, tweets_words)
 	
