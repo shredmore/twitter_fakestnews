@@ -241,7 +241,7 @@ from time import sleep
 import csv
 import sys
 
-def write_to_HDFS(headlines_topics, tweets_topics, cos_sim, wordcloud_hdfspath, cos_sim_hdfspath, topics_hdfspath, datetime_obj):
+def write_to_HDFS(headlines_topics, tweets_topics, cos_sim, wordcloud_hdfspath, cos_sim_hdfspath, topics_hdfspath, datetime_obj, news_agency):
 	# get today's date
 	date = datetime_obj.strftime('#%Y-%m-%d#')
 	# read last date from file
@@ -267,7 +267,6 @@ def write_to_HDFS(headlines_topics, tweets_topics, cos_sim, wordcloud_hdfspath, 
 	merged_dict = {}
 	for word in unique_words:
 		merged_dict[word] = headlines_words.get(word, 0) + tweets_words.get(word, 0)
-
 	# construct wordcloud rows
 	cloud_list = []
 	for word in merged_dict:
@@ -284,7 +283,7 @@ def write_to_HDFS(headlines_topics, tweets_topics, cos_sim, wordcloud_hdfspath, 
 		file_writer.writerow(row)
 	fh.close()
 	# construct cosine similarity row
-	cos_row = (date, cos_sim)
+	cos_row = (date, cos_sim, str(tuple(news_agency)))
 	# write to file
 	fh = open(cos_sim_hdfspath, 'a')
 	file_writer = csv.writer(fh)
@@ -308,7 +307,7 @@ def write_to_HDFS(headlines_topics, tweets_topics, cos_sim, wordcloud_hdfspath, 
 	for row in topics_list:
 		file_writer.writerow(row)
 	fh.close()
-	print ("Appended to csv in HDFS paths: \n", wordcloud_hdfspath, "\n", cos_sim_hdfspath, "\n", topics_hdfspath, "\n")
+	print "Appended to csv in HDFS paths: \n", wordcloud_hdfspath, "\n", cos_sim_hdfspath, "\n", topics_hdfspath, "\n"
 	return 
 
 #-----------------------------

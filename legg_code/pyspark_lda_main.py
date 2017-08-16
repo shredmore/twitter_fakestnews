@@ -10,9 +10,9 @@ sc = SparkContext("local[2]")
 headlines_hdfspath = "/user/w205/project1/headlines/headlines.csv"
 tweets_hdfsdir_path = "/user/w205/project1/tweets_2/"
 stopwords_txt_path = '/home/w205/twitter_fakestnews/legg_code/stopwords.txt'
-wordcloud_hdfspath = "/home/w205/lda_outputs/lda_wordcloud/lda_wordcloud.csv"
+# wordcloud_hdfspath = "/home/w205/lda_outputs/lda_wordcloud/lda_wordcloud.csv"
 cos_sim_hdfspath = "/home/w205/lda_outputs/lda_cossim/lda_cossim.csv"
-topics_hdfspath = "/home/w205/lda_outputs/lda_topics/lda_topics.csv"
+# topics_hdfspath = "/home/w205/lda_outputs/lda_topics/lda_topics.csv"
 
 def main(args):
 	# get date range from arguments
@@ -44,14 +44,24 @@ def main(args):
 	if args.nwag:
 		if args.nwag == "001":
 			news_agency = ["001"]
+			wordcloud_hdfspath = "/home/w205/lda_outputs/lda_wordcloud/lda_wordcloud001.csv"
+			topics_hdfspath = "/home/w205/lda_outputs/lda_topics/lda_topics001.csv"			
 		elif args.nwag == "002":
 			news_agency = ["002"]
+			wordcloud_hdfspath = "/home/w205/lda_outputs/lda_wordcloud/lda_wordcloud002.csv"
+			topics_hdfspath = "/home/w205/lda_outputs/lda_topics/lda_topics002.csv"
 		elif args.nwag == "003":
 			news_agency = ["003"]
+			wordcloud_hdfspath = "/home/w205/lda_outputs/lda_wordcloud/lda_wordcloud003.csv"
+			topics_hdfspath = "/home/w205/lda_outputs/lda_topics/lda_topics003.csv"
 		elif args.nwag == "004":
 			news_agency = ["004"]
+			wordcloud_hdfspath = "/home/w205/lda_outputs/lda_wordcloud/lda_wordcloud004.csv"
+			topics_hdfspath = "/home/w205/lda_outputs/lda_topics/lda_topics004.csv"
 		elif args.nwag == "005":
 			news_agency = ["001", "002", "003", "004"]
+			wordcloud_hdfspath = "/home/w205/lda_outputs/lda_wordcloud/lda_wordcloud.csv"
+			topics_hdfspath = "/home/w205/lda_outputs/lda_topics/lda_topics.csv"
 		else:
 			print "Incorrect news agency specification"
 			sys.exit(1)
@@ -86,7 +96,7 @@ def main(args):
 	print
 	print "writing results to HDFS in 10 seconds, ctrl-c to stop"
 	sleep(10)
-	lp.write_to_HDFS(headlines_topics, tweets_topics, cos_sim, wordcloud_hdfspath, cos_sim_hdfspath, topics_hdfspath, datetime_obj = date_range2)
+	lp.write_to_HDFS(headlines_topics, tweets_topics, cos_sim, wordcloud_hdfspath, cos_sim_hdfspath, topics_hdfspath, date_range2, news_agency)
 
 
 
