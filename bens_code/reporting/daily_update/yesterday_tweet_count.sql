@@ -1,6 +1,6 @@
 --get number of tweets collected yesterday
-SELECT to_date(date_time) the_date
+SELECT from_unixtime(unix_timestamp(a.created_at, 'EEE MMM dd HH:mm:ss +SSSS yyyy'),'yyyy-MM-dd') the_date
 ,COUNT(*) tweets
-FROM tweets_2_distinct
-WHERE to_date(date_time) = date_sub(current_date(),1)
-GROUP BY to_date(date_time);
+FROM tweets_2_distinct a
+GROUP BY from_unixtime(unix_timestamp(a.created_at, 'EEE MMM dd HH:mm:ss +SSSS yyyy'),'yyyy-MM-dd')
+ORDER BY the_date DESC;
