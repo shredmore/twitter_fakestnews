@@ -1,7 +1,7 @@
 #!/bin/bash
-(echo "yesterday's headlines collected by news site" \n\
-	;hive -f yesterday_headline_count.sql \n\
-	;echo "number of tweets collected yesterday" \n\
-	;hive -f yesterday_tweet_count.sql \n\
-	;echo "top #fakenews users and times used" \n\
+(echo "yesterday's headlines collected by news site"\
+	;hive -f yesterday_headline_count.sql\
+	;echo "number of tweets collected yesterday"\
+	;hive -f yesterday_tweet_count.sql\
+	;echo "top #fakenews users and times used"\
 	;hive -f top_fakenews_users.sql) | mail -s "report1" ben.thompson.j@gmail.com
