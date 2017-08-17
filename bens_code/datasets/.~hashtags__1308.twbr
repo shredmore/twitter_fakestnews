@@ -23482,7 +23482,7 @@
             <column-instance column='[F1]' derivation='Day-Trunc' name='[tdy:F1:qk]' pivot='key' type='quantitative' />
           </datasource-dependencies>
           <filter class='categorical' column='[federated.1rskqbu1uclqpm1dn6zds1bmbo87].[Hashtag (group)]'>
-            <groupfilter count='10' end='top' function='end' units='records' user:ui-marker='end' user:ui-top-by-field='true'>
+            <groupfilter count='5' end='top' function='end' units='records' user:ui-marker='end' user:ui-top-by-field='true'>
               <groupfilter direction='DESC' expression='SUM([Number of Records])' function='order' user:ui-marker='order'>
                 <groupfilter function='except' user:ui-domain='database' user:ui-enumeration='exclusive' user:ui-manual-selection='true' user:ui-manual-selection-all-when-empty='true' user:ui-marker='enumerate'>
                   <groupfilter function='level-members' level='[Hashtag (group)]' />
@@ -23514,12 +23514,12 @@
             </view>
             <mark class='Automatic' />
             <encodings>
-              <color column='[federated.1rskqbu1uclqpm1dn6zds1bmbo87].[Hashtag (group)]' />
+              <text column='[federated.1rskqbu1uclqpm1dn6zds1bmbo87].[Hashtag (group)]' />
             </encodings>
             <style>
               <style-rule element='mark'>
                 <format attr='mark-labels-cull' value='true' />
-                <format attr='mark-labels-show' value='false' />
+                <format attr='mark-labels-show' value='true' />
               </style-rule>
             </style>
           </pane>
@@ -23548,11 +23548,6 @@
           </strip>
           <strip size='31'>
             <card type='title' />
-          </strip>
-        </edge>
-        <edge name='right'>
-          <strip size='160'>
-            <card pane-specification-id='0' param='[federated.1rskqbu1uclqpm1dn6zds1bmbo87].[Hashtag (group)]' type='color' />
           </strip>
         </edge>
       </cards>
