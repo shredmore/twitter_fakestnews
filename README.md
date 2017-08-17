@@ -2,6 +2,30 @@
 
 ## 1. Batch Layer:
 
+```
+Clone repo - git clone https://github.com/shredmore/twitter_fakestnews.git
+Create directories to store collected data
+	$ mkdir ./twitter_data
+	$ mkdir ./twitter_data/tweets/
+	$ mkdir ./twitter_data/users/
+	$ mkdir ./twitter_data/hashtags/
+	$ mkdir ./twitter_data/urls/
+	$ mkdir ./twitter_data/mentions/
+	$ mkdir ./twitter_data/places/
+Set up crontab to run 4 python scripts in /bens_code/scraping_code 
+	output will be in same directory that script is executed from
+Set up crontab to run python script in /bens_code/pull_tweets
+	make sure script is executed from directory where you created twitter_data in prev step
+To copy collected data in HDFS run:
+	/bens_code/copy_from_pi/copy_headlines_from_pi.sh
+	/bens_code/copy_from_pi/copy_tweets_from_pi_2.sh
+	Those scripts will both copy data and create tables (.sql files in /bens_code/copy_from_pi)
+If you want an email report you can run /bens_code/reporting/daily_update/daily_update.sh
+	This may not work natively and you may have to set up mail
+Some example queries to run can be found in /bens_code/queries
+```
+
+
 ## 2. Streaming Layer:
 
 ## 3. Serving Layer: Machine Learning
