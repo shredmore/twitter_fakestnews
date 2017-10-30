@@ -8,10 +8,10 @@ import re
 from datetime import datetime
 import csv
 
-api = twitter.Api(consumer_key='P2jn6plFXmwOTBH6NSBkWCJPN',
-                      consumer_secret='sJ5MvwbwZB5bxoiiOW6eQRpmNzRUnjBgZqMpuEbfgiG3LUz2Kz',
-                      access_token_key='2242498214-mp3RRlz2tw1K6W3g0D70ao0ha2p6DmplZp1qYZ8',
-                      access_token_secret='feUuZ12xNcx40rLlkJYPPk79k4k87vNfSoSDOUpVvPqD4')
+api = twitter.Api(consumer_key='',
+                      consumer_secret='',
+                      access_token_key='',
+                      access_token_secret='')
 
 # print(api.VerifyCredentials())
 
