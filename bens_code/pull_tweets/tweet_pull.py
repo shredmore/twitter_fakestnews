@@ -22,6 +22,9 @@ count = '100'
 fakenews = api.GetSearch(raw_query="q="+key_word_1+"%20OR%20"+"%23"+key_word_1+"&count="+count)
 
 #create twitter list for table
+#loop through fakenews object
+#pull data from fakenews object and place
+#in appropriate list
 tweets = []
 user = []
 hashtags = []
